@@ -59,6 +59,47 @@ function About() {
   );
 }
 
+function Services() {
+  const services = [
+    {
+      title: "Interior Design",
+      desc: "Custom interior designs that blend aesthetics with functionality.",
+      icon: "🎨",
+    },
+    {
+      title: "Furniture Assembly",
+      desc: "Professional assembly and installation of modern furniture pieces.",
+      icon: "🛋️",
+    },
+    {
+      title: "Project Management",
+      desc: "Efficient coordination of design and installation workflows.",
+      icon: "📐",
+    },
+  ];
+
+  return (
+    <section className="py-16 px-6 bg-gray-50">
+      <h2 className="text-3xl font-bold text-center text-blue-900 mb-10">
+        Our Services
+      </h2>
+      <div className="grid md:grid-cols-3 gap-8">
+        {services.map((s, idx) => (
+          <div
+            key={idx}
+            className="bg-white p-6 rounded-2xl shadow-md text-center hover:shadow-lg transition"
+          >
+            <div className="text-5xl mb-4">{s.icon}</div>
+            <h3 className="text-xl font-semibold mb-2">{s.title}</h3>
+            <p className="text-gray-600">{s.desc}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+
 // Portfolio Section with Lightbox
 function Portfolio() {
   const categories = {
@@ -145,6 +186,7 @@ export default function App() {
     <div className="font-sans">
       <Hero />
       <About />
+      <Services />
       <Portfolio />
       <Magazine />
       <Footer />
