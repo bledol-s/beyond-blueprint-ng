@@ -5,9 +5,9 @@ import "yet-another-react-lightbox/styles.css";
 // Hero Section
 function Hero() {
   const images = [
-    "/livingroom/modern-luxury.jpg",
-    "/bedroom/master.jpg",
-    "/kitchen/island.jpg",
+    process.env.PUBLIC_URL + "/livingroom/modern-luxury.jpg",
+    process.env.PUBLIC_URL + "/bedroom/master.jpg",
+    process.env.PUBLIC_URL + "/kitchen/island.jpg",
   ];
   const [current, setCurrent] = useState(0);
 
@@ -27,9 +27,10 @@ function Hero() {
       />
       <div className="absolute inset-0 bg-black bg-opacity-50"></div>
 
+      {/* Logo fixed top left */}
       <div className="absolute top-4 left-6 z-20">
-  <img src="/logo.png" alt="Beyond Blueprint NG Logo" className="h-14 md:h-20" />
-</div>
+        <img src={process.env.PUBLIC_URL + "/logo.png"} alt="Beyond Blueprint NG Logo" className="h-14 md:h-20" />
+      </div>
 
       <div className="relative z-10 p-6">
         <h1 className="text-5xl font-bold mb-4">Beyond Blueprint NG</h1>
@@ -52,17 +53,13 @@ function Hero() {
           <button
             key={idx}
             onClick={() => setCurrent(idx)}
-            className={`w-3 h-3 rounded-full ${
-              idx === current ? "bg-yellow-400" : "bg-white"
-            }`}
+            className={`w-3 h-3 rounded-full ${idx === current ? "bg-yellow-400" : "bg-white"}`}
           ></button>
         ))}
       </div>
     </section>
   );
 }
-
-
 
 // About Section
 function About() {
@@ -79,36 +76,20 @@ function About() {
   );
 }
 
+// Services Section
 function Services() {
   const services = [
-    {
-      title: "Interior Design",
-      desc: "Custom interior designs that blend aesthetics with functionality.",
-      icon: "🎨",
-    },
-    {
-      title: "Furniture Assembly",
-      desc: "Professional assembly and installation of modern furniture pieces.",
-      icon: "🛋️",
-    },
-    {
-      title: "Project Management",
-      desc: "Efficient coordination of design and installation workflows.",
-      icon: "📐",
-    },
+    { title: "Interior Design", desc: "Custom interior designs that blend aesthetics with functionality.", icon: "🎨" },
+    { title: "Furniture Assembly", desc: "Professional assembly and installation of modern furniture pieces.", icon: "🛋️" },
+    { title: "Project Management", desc: "Efficient coordination of design and installation workflows.", icon: "📐" },
   ];
 
   return (
     <section className="py-16 px-6 bg-gray-50">
-      <h2 className="text-3xl font-bold text-center text-blue-900 mb-10">
-        Our Services
-      </h2>
+      <h2 className="text-3xl font-bold text-center text-blue-900 mb-10">Our Services</h2>
       <div className="grid md:grid-cols-3 gap-8">
         {services.map((s, idx) => (
-          <div
-            key={idx}
-            className="bg-white p-6 rounded-2xl shadow-md text-center hover:shadow-lg transition"
-          >
+          <div key={idx} className="bg-white p-6 rounded-2xl shadow-md text-center hover:shadow-lg transition">
             <div className="text-5xl mb-4">{s.icon}</div>
             <h3 className="text-xl font-semibold mb-2">{s.title}</h3>
             <p className="text-gray-600">{s.desc}</p>
@@ -119,8 +100,7 @@ function Services() {
   );
 }
 
-
-// Portfolio Section with Lightbox
+// Portfolio Section
 function Portfolio() {
   const categories = {
     "Living Room": [
@@ -174,31 +154,24 @@ function Portfolio() {
 
   return (
     <section className="py-16 px-6 bg-white">
-      <h2 className="text-4xl font-extrabold text-center text-blue-900 mb-12">
-        Portfolio
-      </h2>
+      <h2 className="text-4xl font-extrabold text-center text-blue-900 mb-12">Portfolio</h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
         {Object.keys(categories).map((cat, idx) => (
           <div key={idx}>
-            {/* Category Title */}
-            <h3 className="text-2xl font-bold text-blue-900 mb-4 text-center">
-              {cat}
-            </h3>
-
-            {/* Horizontal Slider */}
+            <h3 className="text-2xl font-bold text-blue-900 mb-4 text-center">{cat}</h3>
             <div className="flex space-x-4 overflow-x-auto scrollbar-hide">
               {categories[cat].map((img, i) => (
                 <button
                   key={i}
                   onClick={() => {
-                    setSlides(categories[cat].map((x) => ({ src: x })));
+                    setSlides(categories[cat].map((x) => ({ src: process.env.PUBLIC_URL + x })));
                     setOpen(true);
                   }}
                   className="focus:outline-none"
                 >
                   <img
-                    src={img}
+                    src={process.env.PUBLIC_URL + img}
                     alt={`${cat} ${i + 1}`}
                     className="w-64 h-44 object-cover rounded-xl shadow-md flex-shrink-0 hover:opacity-80 transition"
                   />
@@ -209,14 +182,10 @@ function Portfolio() {
         ))}
       </div>
 
-      {/* Lightbox Viewer */}
-      {open && (
-        <Lightbox open={open} close={() => setOpen(false)} slides={slides} />
-      )}
+      {open && <Lightbox open={open} close={() => setOpen(false)} slides={slides} />}
     </section>
   );
 }
-
 
 // Magazine Section
 function Magazine() {
@@ -225,7 +194,7 @@ function Magazine() {
       <h2 className="text-3xl font-bold text-blue-900 mb-6">Our Magazine</h2>
       <div className="max-w-4xl mx-auto">
         <iframe
-          src="/magazine.pdf"
+          src={process.env.PUBLIC_URL + "/magazine.pdf"}
           title="Beyond Blueprint Magazine"
           className="w-full h-[600px] border-2 rounded-2xl shadow-md"
         ></iframe>
@@ -238,14 +207,10 @@ function Magazine() {
 function Footer() {
   return (
     <footer className="py-8 bg-blue-900 text-white text-center">
-      {/* Logo + Social Icons Row */}
       <div className="flex justify-center items-center space-x-6 mb-4">
-        {/* Logo → scrolls to top */}
-        <a
-          href="#hero"
-          className="hover:opacity-80 transition"
-        >
-          <img src="/logo.png" alt="Beyond Blueprint NG Logo" className="h-8 w-auto" />
+        {/* Logo scrolls to top */}
+        <a href="#hero" className="hover:opacity-80 transition">
+          <img src={process.env.PUBLIC_URL + "/logo.png"} alt="Beyond Blueprint NG Logo" className="h-8 w-auto" />
         </a>
 
         {/* LinkedIn */}
@@ -255,12 +220,7 @@ function Footer() {
           rel="noopener noreferrer"
           className="hover:text-yellow-400 flex items-center"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6"
-            fill="currentColor"
-            viewBox="0 0 24 24"
-          >
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
             <path d="M4.98 3.5c0 1.38-1.12 2.5-2.49 2.5C1.12 6 0 4.88 0 3.5S1.12 1 2.49 1s2.49 1.12 2.49 2.5zM.5 8h4.98V24H.5V8zm7.5 0h4.78v2.2h.07c.67-1.2 2.3-2.45 4.74-2.45 5.06 0 6 3.33 6 7.66V24h-4.98v-7.6c0-1.82-.04-4.16-2.53-4.16-2.53 0-2.92 1.98-2.92 4.03V24H8V8z"/>
           </svg>
         </a>
@@ -272,27 +232,16 @@ function Footer() {
           rel="noopener noreferrer"
           className="hover:text-yellow-400 flex items-center"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6"
-            fill="currentColor"
-            viewBox="0 0 24 24"
-          >
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
             <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zM12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.25a3.25 3.25 0 1 1 0-6.5 3.25 3.25 0 0 1 0 6.5zm6.5-9.75a1.25 1.25 0 1 1-2.5 0 1.25 1.25 0 0 1 2.5 0z"/>
           </svg>
         </a>
       </div>
 
-      {/* Copyright Line */}
-      <p className="text-sm">
-        © {new Date().getFullYear()} Beyond Blueprint NG. All rights reserved.
-      </p>
+      <p className="text-sm">© {new Date().getFullYear()} Beyond Blueprint NG. All rights reserved.</p>
     </footer>
   );
 }
-
-
-
 
 // Main App Component
 export default function App() {
@@ -312,12 +261,7 @@ export default function App() {
         rel="noopener noreferrer"
         className="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition z-50 flex items-center justify-center"
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-6 w-6"
-          viewBox="0 0 24 24"
-          fill="currentColor"
-        >
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 24 24" fill="currentColor">
           <path d="M12 .5C5.6.5.5 5.6.5 12c0 2.1.6 4.1 1.7 5.9L.5 23.5l5.8-1.7c1.7 1 3.7 1.6 5.7 1.6 6.4 0 11.5-5.1 11.5-11.5S18.4.5 12 .5zm0 21c-1.9 0-3.8-.5-5.4-1.5l-.4-.2-3.5 1 1-3.4-.2-.4C2.8 15.8 2.3 13.9 2.3 12c0-5.4 4.4-9.7 9.7-9.7 5.4 0 9.7 4.4 9.7 9.7 0 5.4-4.4 9.7-9.7 9.7zM16.6 14.8c-.3-.1-1.6-.8-1.8-.9s-.4-.1-.6.1c-.2.3-.7.9-.9 1-.2.1-.3.2-.6.1s-1.1-.4-2.1-1.3c-.8-.7-1.3-1.6-1.5-1.8-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.4.1-.1.2-.2.3-.4.1-.1.1-.3 0-.4-.1-.1-.6-1.5-.9-2s-.5-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2 0 1.2.8 2.4.9 2.6.1.2 1.6 2.4 3.9 3.3 2.3.9 2.3.6 2.7.6.4 0 1.3-.5 1.5-1 .2-.5.2-.9.1-1z" />
         </svg>
       </a>
