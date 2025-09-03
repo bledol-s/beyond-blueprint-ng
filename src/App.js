@@ -227,7 +227,7 @@ function Footer() {
 
         {/* Instagram */}
         <a
-          href="https://www.instagram.com/YOUR-INSTAGRAM"
+          href="https://www.instagram.com/beyond_blueprint_ng"
           target="_blank"
           rel="noopener noreferrer"
           className="hover:text-yellow-400 flex items-center"
