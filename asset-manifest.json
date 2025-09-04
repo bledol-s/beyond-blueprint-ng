@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/beyond-blueprint-ng/static/css/main.22e33ac8.css",
-    "main.js": "/beyond-blueprint-ng/static/js/main.658e81ba.js",
+    "main.js": "/beyond-blueprint-ng/static/js/main.885b1698.js",
     "static/js/453.5a3999b0.chunk.js": "/beyond-blueprint-ng/static/js/453.5a3999b0.chunk.js",
     "index.html": "/beyond-blueprint-ng/index.html",
     "main.22e33ac8.css.map": "/beyond-blueprint-ng/static/css/main.22e33ac8.css.map",
-    "main.658e81ba.js.map": "/beyond-blueprint-ng/static/js/main.658e81ba.js.map",
+    "main.885b1698.js.map": "/beyond-blueprint-ng/static/js/main.885b1698.js.map",
     "453.5a3999b0.chunk.js.map": "/beyond-blueprint-ng/static/js/453.5a3999b0.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.22e33ac8.css",
-    "static/js/main.658e81ba.js"
+    "static/js/main.885b1698.js"
   ]
 }
