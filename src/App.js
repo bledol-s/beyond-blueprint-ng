@@ -104,10 +104,10 @@ function Services() {
 function Portfolio() {
   const categories = {
     "Living Room": [
-      process.env.PUBLIC_URL + "livingroom/modern-luxury.jpg",
-      process.env.PUBLIC_URL + "livingroom/contemporary.jpg",
-      process.env.PUBLIC_URL + "livingroom/classic.jpg",
-      process.env.PUBLIC_URL + "livingroom/minimalist.jpg",
+      process.env.PUBLIC_URL + "/livingroom/modern-luxury.jpg",
+      process.env.PUBLIC_URL + "/livingroom/contemporary.jpg",
+      process.env.PUBLIC_URL + "/livingroom/classic.jpg",
+      process.env.PUBLIC_URL + "/livingroom/minimalist.jpg",
     ],
     "Bedroom": [
       process.env.PUBLIC_URL + "/bedroom/master.jpg",
@@ -171,10 +171,11 @@ function Portfolio() {
                   className="focus:outline-none"
                 >
                   <img
-                    src={process.env.PUBLIC_URL + img}
+                    src={process.env.PUBLIC_URL + img.replace(process.env.PUBLIC_URL, "")}
                     alt={`${cat} ${i + 1}`}
                     className="w-64 h-44 object-cover rounded-xl shadow-md flex-shrink-0 hover:opacity-80 transition"
                   />
+
                 </button>
               ))}
             </div>
