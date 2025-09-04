@@ -104,10 +104,10 @@ function Services() {
 function Portfolio() {
   const categories = {
     "Living Room": [
-      process.env.PUBLIC_URL + "/livingroom/modern-luxury.jpg",
-      process.env.PUBLIC_URL + "/livingroom/contemporary.jpg",
-      process.env.PUBLIC_URL + "/livingroom/classic.jpg",
-      process.env.PUBLIC_URL + "/livingroom/minimalist.jpg",
+      process.env.PUBLIC_URL + "livingroom/modern-luxury.jpg",
+      process.env.PUBLIC_URL + "livingroom/contemporary.jpg",
+      process.env.PUBLIC_URL + "livingroom/classic.jpg",
+      process.env.PUBLIC_URL + "livingroom/minimalist.jpg",
     ],
     "Bedroom": [
       process.env.PUBLIC_URL + "/bedroom/master.jpg",
