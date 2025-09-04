@@ -4,14 +4,15 @@ import "yet-another-react-lightbox/styles.css";
 
 // Hero Section
 function Hero() {
-
   const images = [
     process.env.PUBLIC_URL + "/livingroom/modern-luxury.jpg",
     process.env.PUBLIC_URL + "/bedroom/master.jpg",
     process.env.PUBLIC_URL + "/kitchen/island.jpg",
   ];
+
   const [current, setCurrent] = useState(0);
   const [showForm, setShowForm] = useState(false);
+  const [status, setStatus] = useState(""); // ✅ For success/error messages
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -19,6 +20,29 @@ function Hero() {
     }, 4000);
     return () => clearInterval(interval);
   }, [images.length]);
+
+  // ✅ Handle form submit via fetch
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const data = new FormData(e.target);
+
+    try {
+      const res = await fetch("https://formspree.io/f/YOUR_FORM_ID", {
+        method: "POST",
+        body: data,
+        headers: { Accept: "application/json" },
+      });
+
+      if (res.ok) {
+        setStatus("SUCCESS");
+        e.target.reset();
+      } else {
+        setStatus("ERROR");
+      }
+    } catch (err) {
+      setStatus("ERROR");
+    }
+  };
 
   return (
     <section id="hero" className="relative h-screen flex flex-col justify-center items-center text-center text-white">
@@ -28,11 +52,6 @@ function Hero() {
         className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000"
       />
       <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-
-      {/* Logo fixed top left */}
-      <div className="absolute top-4 left-6 z-20">
-        <img src={process.env.PUBLIC_URL + "/logo.png"} alt="Beyond Blueprint NG Logo" className="h-14 md:h-20" />
-      </div>
 
       <div className="relative z-10 p-6">
         <h1 className="text-5xl font-bold mb-4">Beyond Blueprint NG</h1>
@@ -47,11 +66,10 @@ function Hero() {
         </button>
       </div>
 
-      {/* Quote Form Modal */}
+      {/* Modal Form */}
       {showForm && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-60 z-50">
-          <div className="bg-white rounded-2xl shadow-xl max-w-lg w-full p-6 relative">
-            {/* Close button */}
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-60 z-50 animate-fadeIn">
+          <div className="bg-white rounded-2xl shadow-xl max-w-lg w-full p-6 relative transform transition-all duration-500 scale-95 opacity-0 animate-[fadeIn_0.3s_ease-out_forwards]">
             <button
               onClick={() => setShowForm(false)}
               className="absolute top-3 right-3 text-gray-500 hover:text-black"
@@ -61,51 +79,54 @@ function Hero() {
 
             <h2 className="text-2xl font-bold text-blue-900 mb-4">Request a Quote</h2>
 
-            <form
-              action="https://formspree.io/f/mkgvpbkw"
-              method="POST"
-              className="space-y-4"
-            >
-              <input
-                type="text"
-                name="name"
-                placeholder="Your Name"
-                required
-                className="w-full p-3 border rounded-lg"
-              />
-              <input
-                type="email"
-                name="email"
-                placeholder="Your Email"
-                required
-                className="w-full p-3 border rounded-lg"
-              />
-              <input
-                type="text"
-                name="phone"
-                placeholder="Your Phone Number"
-                className="w-full p-3 border rounded-lg"
-              />
-              <textarea
-                name="message"
-                placeholder="Project Details"
-                rows="4"
-                required
-                className="w-full p-3 border rounded-lg"
-              ></textarea>
+            {status === "SUCCESS" ? (
+              <p className="text-green-600 font-semibold">✅ Thank you! We’ll get back to you soon.</p>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Your Name"
+                  required
+                  className="w-full p-3 border rounded-lg text-black placeholder-gray-500"
+                />
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Your Email"
+                  required
+                  className="w-full p-3 border rounded-lg text-black placeholder-gray-500"
+                />
+                <input
+                  type="text"
+                  name="phone"
+                  placeholder="Your Phone Number"
+                  className="w-full p-3 border rounded-lg text-black placeholder-gray-500"
+                />
+                <textarea
+                  name="message"
+                  placeholder="Project Details"
+                  rows="4"
+                  required
+                  className="w-full p-3 border rounded-lg text-black placeholder-gray-500"
+                ></textarea>
+                <button
+                  type="submit"
+                  className="bg-blue-900 text-white px-6 py-3 rounded-lg shadow hover:bg-blue-800 w-full"
+                >
+                  Send Request
+                </button>
+              </form>
+            )}
 
-              <button
-                type="submit"
-                className="bg-blue-900 text-white px-6 py-3 rounded-lg shadow hover:bg-blue-800 w-full"
-              >
-                Send Request
-              </button>
-            </form>
+            {status === "ERROR" && (
+              <p className="text-red-600 font-semibold mt-2">❌ Oops! Something went wrong. Try again.</p>
+            )}
           </div>
         </div>
       )}
 
-      {/* Navigation dots */}
+      {/* Navigation Dots */}
       <div className="absolute bottom-6 flex space-x-3 z-10">
         {images.map((_, idx) => (
           <button
@@ -118,6 +139,7 @@ function Hero() {
     </section>
   );
 }
+
 
 // About Section
 function About() {
