@@ -27,7 +27,7 @@ function Hero() {
     const data = new FormData(e.target);
 
     try {
-      const res = await fetch("https://formspree.io/f/YOUR_FORM_ID", {
+      const res = await fetch("https://formspree.io/f/mkgvpbkw", {
         method: "POST",
         body: data,
         headers: { Accept: "application/json" },
