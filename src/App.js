@@ -4,12 +4,14 @@ import "yet-another-react-lightbox/styles.css";
 
 // Hero Section
 function Hero() {
+
   const images = [
     process.env.PUBLIC_URL + "/livingroom/modern-luxury.jpg",
     process.env.PUBLIC_URL + "/bedroom/master.jpg",
     process.env.PUBLIC_URL + "/kitchen/island.jpg",
   ];
   const [current, setCurrent] = useState(0);
+  const [showForm, setShowForm] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -37,15 +39,71 @@ function Hero() {
         <p className="text-lg md:text-2xl mb-6">
           Transforming Spaces with Interior Design & Furniture Installation
         </p>
-        <a
-          href="https://wa.me/2348137342695"
-          target="_blank"
-          rel="noopener noreferrer"
+        <button
+          onClick={() => setShowForm(true)}
           className="bg-yellow-400 text-black px-6 py-3 rounded-2xl font-semibold shadow-lg hover:opacity-90"
         >
-          Chat on WhatsApp
-        </a>
+          Get a Quote
+        </button>
       </div>
+
+      {/* Quote Form Modal */}
+      {showForm && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-60 z-50">
+          <div className="bg-white rounded-2xl shadow-xl max-w-lg w-full p-6 relative">
+            {/* Close button */}
+            <button
+              onClick={() => setShowForm(false)}
+              className="absolute top-3 right-3 text-gray-500 hover:text-black"
+            >
+              ✖
+            </button>
+
+            <h2 className="text-2xl font-bold text-blue-900 mb-4">Request a Quote</h2>
+
+            <form
+              action="https://formspree.io/f/mkgvpbkw"
+              method="POST"
+              className="space-y-4"
+            >
+              <input
+                type="text"
+                name="name"
+                placeholder="Your Name"
+                required
+                className="w-full p-3 border rounded-lg"
+              />
+              <input
+                type="email"
+                name="email"
+                placeholder="Your Email"
+                required
+                className="w-full p-3 border rounded-lg"
+              />
+              <input
+                type="text"
+                name="phone"
+                placeholder="Your Phone Number"
+                className="w-full p-3 border rounded-lg"
+              />
+              <textarea
+                name="message"
+                placeholder="Project Details"
+                rows="4"
+                required
+                className="w-full p-3 border rounded-lg"
+              ></textarea>
+
+              <button
+                type="submit"
+                className="bg-blue-900 text-white px-6 py-3 rounded-lg shadow hover:bg-blue-800 w-full"
+              >
+                Send Request
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
 
       {/* Navigation dots */}
       <div className="absolute bottom-6 flex space-x-3 z-10">
