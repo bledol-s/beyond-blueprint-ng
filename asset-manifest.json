@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/beyond-blueprint-ng/static/css/main.c1ebbaf6.css",
-    "main.js": "/beyond-blueprint-ng/static/js/main.52c3aee6.js",
+    "main.css": "/beyond-blueprint-ng/static/css/main.c99bd4e8.css",
+    "main.js": "/beyond-blueprint-ng/static/js/main.b758ba4f.js",
     "static/js/453.5a3999b0.chunk.js": "/beyond-blueprint-ng/static/js/453.5a3999b0.chunk.js",
     "index.html": "/beyond-blueprint-ng/index.html",
-    "main.c1ebbaf6.css.map": "/beyond-blueprint-ng/static/css/main.c1ebbaf6.css.map",
-    "main.52c3aee6.js.map": "/beyond-blueprint-ng/static/js/main.52c3aee6.js.map",
+    "main.c99bd4e8.css.map": "/beyond-blueprint-ng/static/css/main.c99bd4e8.css.map",
+    "main.b758ba4f.js.map": "/beyond-blueprint-ng/static/js/main.b758ba4f.js.map",
     "453.5a3999b0.chunk.js.map": "/beyond-blueprint-ng/static/js/453.5a3999b0.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c1ebbaf6.css",
-    "static/js/main.52c3aee6.js"
+    "static/css/main.c99bd4e8.css",
+    "static/js/main.b758ba4f.js"
   ]
 }
