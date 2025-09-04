@@ -12,7 +12,7 @@ function Hero() {
 
   const [current, setCurrent] = useState(0);
   const [showForm, setShowForm] = useState(false);
-  const [status, setStatus] = useState(""); // ✅ For success/error messages
+  const [status, setStatus] = useState(""); 
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -21,7 +21,7 @@ function Hero() {
     return () => clearInterval(interval);
   }, [images.length]);
 
-  // ✅ Handle form submit via fetch
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = new FormData(e.target);
@@ -53,6 +53,15 @@ function Hero() {
       />
       <div className="absolute inset-0 bg-black bg-opacity-50"></div>
 
+      {/* Logo (fixed top-left) */}
+      <div className="absolute top-4 left-6 z-20">
+        <img
+          src={process.env.PUBLIC_URL + "/logo.png"}
+          alt="Beyond Blueprint NG Logo"
+          className="h-14 md:h-20"
+        />
+      </div>
+
       <div className="relative z-10 p-6">
         <h1 className="text-5xl font-bold mb-4">Beyond Blueprint NG</h1>
         <p className="text-lg md:text-2xl mb-6">
@@ -68,8 +77,8 @@ function Hero() {
 
       {/* Modal Form */}
       {showForm && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-60 z-50 animate-fadeIn">
-          <div className="bg-white rounded-2xl shadow-xl max-w-lg w-full p-6 relative transform transition-all duration-500 scale-95 opacity-0 animate-[fadeIn_0.3s_ease-out_forwards]">
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-60 z-50">
+          <div className="bg-white rounded-2xl shadow-xl max-w-lg w-full p-6 relative transform transition-all duration-300 ease-out scale-95 opacity-0 animate-fadeInModal">
             <button
               onClick={() => setShowForm(false)}
               className="absolute top-3 right-3 text-gray-500 hover:text-black"
@@ -80,7 +89,9 @@ function Hero() {
             <h2 className="text-2xl font-bold text-blue-900 mb-4">Request a Quote</h2>
 
             {status === "SUCCESS" ? (
-              <p className="text-green-600 font-semibold">✅ Thank you! We’ll get back to you soon.</p>
+              <p className="text-green-600 font-semibold">
+                ✅ Thank you! We’ll get back to you soon.
+              </p>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4">
                 <input
@@ -120,11 +131,14 @@ function Hero() {
             )}
 
             {status === "ERROR" && (
-              <p className="text-red-600 font-semibold mt-2">❌ Oops! Something went wrong. Try again.</p>
+              <p className="text-red-600 font-semibold mt-2">
+                ❌ Oops! Something went wrong. Try again.
+              </p>
             )}
           </div>
         </div>
       )}
+
 
       {/* Navigation Dots */}
       <div className="absolute bottom-6 flex space-x-3 z-10">

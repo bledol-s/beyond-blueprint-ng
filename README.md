@@ -1,70 +1,90 @@
-# Getting Started with Create React App
+🌐 Beyond Blueprint NG
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Beyond Blueprint NG is a modern portfolio website for an interior design and furniture installation brand based in Abuja, Nigeria.
+It showcases services, portfolio projects, a digital magazine, and integrates contact options (WhatsApp + Get a Quote form).
 
-## Available Scripts
+✨ Features
 
-In the project directory, you can run:
+🎨 Hero Slider – rotating hero images with brand logo.
 
-### `npm start`
+📝 About & Services Sections – highlights the brand’s story and expertise.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+🖼️ Portfolio Gallery – interactive categories with lightbox for full-view images.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+📖 Digital Magazine – embedded PDF viewer.
 
-### `npm test`
+💬 Contact Options
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Floating WhatsApp chat button.
 
-### `npm run build`
+“Get a Quote” modal form (email via Formspree).
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+📌 Footer – social links (LinkedIn, Instagram) + logo (scroll-to-top).
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+📱 Responsive Design – optimized for desktop and mobile.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+🔍 SEO & Analytics – meta tags added + Google Analytics integrated.
 
-### `npm run eject`
+🛠️ Tech Stack
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Frontend: React + TailwindCSS
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Gallery: Yet-Another-React-Lightbox
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Deployment: GitHub Pages
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Forms: Formspree (email handling)
 
-## Learn More
+🚀 Getting Started
+1. Clone the Repo
+git clone https://github.com/bledol-s/beyond-blueprint-ng.git
+cd beyond-blueprint-ng
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+2. Install Dependencies
+npm install
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+3. Run Development Server
+npm start
 
-### Code Splitting
+App runs at: http://localhost:3000
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+4. Build for Production
+npm run build
 
-### Analyzing the Bundle Size
+🌍 Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+This project is deployed with GitHub Pages.
 
-### Making a Progressive Web App
+npm run deploy
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
+Website: 👉 https://bledol-s.github.io/beyond-blueprint-ng
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+📂 Project Structure
+public/
+ ├── logo.png
+ ├── magazine.pdf
+ ├── livingroom/
+ ├── bedroom/
+ ├── kitchen/
+ ├── dining/
+ ├── outdoor/
+ ├── restaurants/
+ ├── grocery/
+ ├── bathrooms/
+src/
+ ├── App.js
+ ├── index.js
+ ├── index.css
 
-### Deployment
+🔗 Links
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+🌍 Live Website: Beyond Blueprint NG
 
-### `npm run build` fails to minify
+💼 LinkedIn: Beyond Blueprint NG
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+📷 Instagram: @beyond_blueprint_ng
+
+📜 License
+
+This project is licensed under the MIT License.
